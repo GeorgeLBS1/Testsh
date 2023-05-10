@@ -22,5 +22,12 @@ while IFS= read -r line || [ -n "$line" ]; do
   fi
 done < clientes0
 
-# Leer una última línea vacía para asegurarse de que se procese la última línea
-read -r || [ $? -eq 0 ]
+# Leer la última línea y verificar si está vacía o no
+read -r last_line
+if [ -n "$last_line" ]; then
+  echo "La última línea no está vacía: $last_line"
+  # Aquí puedes hacer lo que quieras con la última línea
+else
+  echo "La última línea está vacía."
+  # Aquí puedes hacer lo que quieras si la última línea está vacía
+fi

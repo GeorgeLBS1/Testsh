@@ -13,13 +13,13 @@ while IFS= read -r line || [ -n "$line" ]; do
   else
     echo "Se realizarán modificaciones en: $line/*"
     nombre=$(basename "$line")
-    nombre="$pwd/$nombre"
-    echo "Directorio: $nombre"
+    sitio="$pwd/$nombre"
+    echo "Directorio: $sitio"
   
     rm -r "$line"/*
     cp -r base/* "$line"
   
-    sed -i "s/\"\//\"\/$nombre\//" "$line/index.html"
+    sed -i "s/\"\//\"\/$sitio\//" "$line/index.html"
   fi
 done < clientes0
 

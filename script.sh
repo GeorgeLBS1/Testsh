@@ -13,6 +13,7 @@ while IFS= read -r line || [ -n "$line" ]; do
   else
     echo "Se realizarán modificaciones en: $line/*"
     nombre=$(basename "$line")
+    nombre="$pwd/$nombre"
     echo "Directorio: $nombre"
   
     rm -r "$line"/*

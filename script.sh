@@ -3,7 +3,7 @@ echo "--------------------PRUEBA DE FUNCIONAMIENTO------------------------------
 
 cd "$(dirname "$(readlink -f "$0")")"
 
-while IFS= read -r line; do
+while IFS= read -r line || [[ -n "$line" ]]; do
   # Eliminar los espacios en blanco de la variable $line
   line=$(echo "$line" | sed 's/ //g')
   
@@ -21,3 +21,7 @@ while IFS= read -r line; do
     sed -i "s/\"\//\"\/$nombre\//" "$line/index.html"
   fi
 done < clientes0
+
+# Leer una última línea vacía para asegurarse de que se procese la última línea
+read <&0
+

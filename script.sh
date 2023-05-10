@@ -9,9 +9,9 @@ while IFS= read -r line || [ -n "$line" ]; do
   
   # Si la línea está en blanco o sólo contiene espacios, no hacemos nada
   if [ -z "$line" ]; then
-    echo "La línea está vacía, no se eliminan archivos."
+    echo "La línea está vacía, no se realiza carga de '/base/*' a esta ruta."
   else
-    echo "$line/*"
+    echo "Se realizarán modificaciones en: $line/*"
     nombre=$(basename "$line")
     echo "Directorio: $nombre"
   

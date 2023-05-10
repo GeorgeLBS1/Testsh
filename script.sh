@@ -4,8 +4,11 @@ echo "--------------------PRUEBA DE FUNCIONAMIENTO------------------------------
 cd "$(dirname "$(readlink -f "$0")")"
 
 while IFS= read -r line; do
+  # Eliminar los espacios en blanco de la variable $line
+  line=$(echo "$line" | sed 's/ //g')
+  
   # Si la línea está en blanco o sólo contiene espacios, no hacemos nada
-  if [[ -z "${line// /}" ]]; then
+  if [ -z "$line" ]; then
     echo "La línea está vacía, no se eliminan archivos."
   else
     echo "$line/*"
